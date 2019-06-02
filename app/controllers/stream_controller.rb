@@ -1,5 +1,5 @@
-class StreamAuthController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :auth
+class StreamController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:auth, :play]
 
 =begin
 
@@ -15,6 +15,10 @@ Parameters: {
 }
 
 =end
+
+  def play
+    render plain: "All Good", status: 201
+  end
 
   def auth
     allowed = [
