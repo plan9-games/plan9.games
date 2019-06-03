@@ -21,12 +21,9 @@ Parameters: {
   end
 
   def auth
-    allowed = [
-      "jon_xxx1",
-      "emma_desu_butts",
-    ]
+    stream_key = StreamKey.find_by(key: params[:name])
 
-    if allowed.include?(params[:name])
+    if stream_key&.active?
       render plain: "All Good", status: 201
     else
       render plain: "No", status: 404

@@ -8,6 +8,8 @@ RSpec.describe StreamController do
     end
 
     it "returns 201 when provided with proper stream key" do
+      StreamKey.create!(key: "jon_xxx1", active: true)
+
       post :auth, params: { name: "jon_xxx1" }
       expect(response).to have_http_status(:created)
     end
